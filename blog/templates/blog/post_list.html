@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post list</title>
+</head>
+<body>
+<!--    {{ items }}-->
+    <div style="margin-left: 40%">
+        <p>ZALUPA</p>
+    </div>
+    <div style="margin-left: 40%">
+        <a style="font-size: 35px; color: black" href="{% url 'post_new' %}">
+            Create new post
+        </a>
+        <a style="font-size: 35px; color: black" href="{% url 'post_draft' %}">
+            Draft
+        </a>
+    </div>
+    {% for post in items %}
+    <div style="margin: 20px; display: inline-block">
+        <div style="border: 1px solid; ">
+            <div>
+                <a href="{% url 'post_detail' post_pk=post.pk %}">{{post.title}}</a>
+            </div>
+            <div>{{post.text}}</div>
+            <div>{{post.created_date}}</div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

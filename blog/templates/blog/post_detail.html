@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post list</title>
+</head>
+<body>
+<!--    {{ items }}-->
+    <div style="margin-left: 40%">
+        <a style="font-size: 35px; color: black" href="{% url 'post_list' %}">ZALUPA</a>
+        <a style="font-size: 35px; color: black" href="{% url 'post_list' %}">
+          bACK TO POST
+        </a>
+        <a style="font-size: 35px; color: black" href="{% url 'post_edit' post_pk=post.pk %}">
+          Edit
+        </a>
+        {%if post.published == False%}
+        <a style="font-size: 35px; color: black" href="{% url 'post_edit' post_pk=post.pk %}">
+          Publish
+        </a>
+        {%endif%}
+        <a style="font-size: 35px; color: black" href="{% url 'post_delete' post_pk=post.pk %}">
+          Delete
+        </a>
+    </div>
+
+    <div style="margin: 20px; display: inline-block">
+        <div style="border: 1px solid; ">
+            <div>
+                <a href="{% url 'post_detail' post_pk=post.pk %}">{{post.title}}</a>
+            </div>
+            <div>{{post.text}}</div>
+            <div>{{post.created_date}}</div>
+        </div>
+    </div>
+</body>
+</html>
